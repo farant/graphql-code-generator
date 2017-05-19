@@ -8,7 +8,7 @@ export type {{ name }} = any;
 
 export interface {{ name }}{{#if isArgumentsType}}Args{{/if}}{{#if hasImplementedInterfaces}} extends {{#each implementedInterfaces}}{{this}}{{#unless @last}},{{/unless}}{{/each}}{{/if}} {
   {{#each fields}}
-  {{ name }}: {{#if isArray}}Array<{{/if}}{{ type }}{{#if isArray}}>{{/if}}{{#unless isRequired}} | null{{/unless}};
+  {{ name }}{{#unless isRequired}}?{{/unless}}: {{#if isArray}}Array<{{/if}}{{ type }}{{#if isArray}}>{{/if}};
   {{/each}}
 }
 {{/if}}
