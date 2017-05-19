@@ -6,11 +6,13 @@ export type {{ name }} = any;
 {{/if}}
 {{#if isObject}}
 
-export interface {{ name }}{{#if isArgumentsType}}Args{{/if}}{{#if hasImplementedInterfaces}} extends {{#each implementedInterfaces}}{{this}}{{#unless @last}},{{/unless}}{{/each}}{{/if}} {
+export type {{ name }}{{#if isArgumentsType}}Args{{/if}}
+{
   {{#each fields}}
   {{ name }}{{#unless isRequired}}?{{/unless}}: {{#if isArray}}Array<{{/if}}{{ type }}{{#if isArray}}>{{/if}};
   {{/each}}
-}
+} {{#if hasImplementedInterfaces}}& {{#each implementedInterfaces}}{{this}}{{#unless @last}}& {{/unless}}{{/each}}{{/if}} 
+
 {{/if}}
 {{#if isEnum}}
 
