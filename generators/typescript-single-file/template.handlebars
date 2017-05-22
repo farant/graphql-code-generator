@@ -45,3 +45,6 @@ export namespace {{ name }} {
   {{/each}}
 }
 {{/each}}
+
+export type QueryName = keyof Query;
+export type MutationName = keyof Mutation;
